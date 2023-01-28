@@ -1,7 +1,7 @@
-import { CenterCss } from "components/App/App.styled";
+import { CenterCss, LoaderCss } from "components/App/App.styled";
 import { MutatingDots } from "react-loader-spinner"
 const Loader = () => (
-  <CenterCss>
+  <LoaderCss>
     <MutatingDots
       height="100"
       width="100"
@@ -13,7 +13,7 @@ const Loader = () => (
       wrapperClass=""
       visible={true}
     />
-  </CenterCss>
+  </LoaderCss>
 );
 
 export default Loader;

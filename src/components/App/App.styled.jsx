@@ -15,4 +15,7 @@ export const CenterCss = styled.div`
 
     font-size: 40px;
 `
+export const LoaderCss = styled.div`
+    margin-left: 46.5%;
+`
 

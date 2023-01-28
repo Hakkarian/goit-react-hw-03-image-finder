@@ -2,7 +2,7 @@ import { FormCss, IconButtonCss, IconCss, InputCss, SearchBarCss } from "./Searc
 import PropTypes from "prop-types";
 
 
-export const SearchBar = ({onSubmit}) =>
+export const SearchBar = ({onSubmit, onChange}) =>
 
       <SearchBarCss>
         <FormCss onSubmit={onSubmit}>
@@ -16,7 +16,7 @@ export const SearchBar = ({onSubmit}) =>
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
-            name="query"
+        name="query"
           />
         </FormCss>
       </SearchBarCss>

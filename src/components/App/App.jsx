@@ -9,18 +9,15 @@ import { CenterCss } from "./App.styled";
 
 
 
-
 export class App extends Component {
     state = {
         page: 1,
         items: [],
         query: '',
-        status: "idle",
+        status: "",
         error: null
     }
-    async componentDidMount() {
-        this.setState({ status: "idle" });
-    }
+
     async componentDidUpdate(prevProps, prevState) {
         if (prevState.query !== this.state.query || prevState.page !== this.state.page) {
             console.log(this.state.query)
@@ -41,40 +38,52 @@ export class App extends Component {
         }
     }
 
-    handleLoad = async () => {
+    handleLoad = () => {
         
         this.setState(prevState => ({ page: prevState.page + 1, items: [...prevState.items] }))
         console.log(this.state.page);
     }
 
-    handleSubmit = async (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
 
-        this.setState({
-          page: 1,
-            query: e.target.elements.query.value,
-            items: []
-        });
+      this.setState(prevState => {
+        const queryValue = e.target.elements.query.value;
 
+        if (prevState.query === queryValue && prevState.items.length < 13) {
+
+          return ({
+            page: 1,
+            query: queryValue,
+          })
+        } 
+          return {
+            page: 1,
+            query: queryValue,
+            items: [],
+          }; 
+
+        })
     }
     toggleSmth = () => {
         this.setState({isLoading: !this.state.isLoading})
-    }
-
+  }
     render() {
-        const { items, status } = this.state;
+      const { items, status, query } = this.state;
+      console.log(this.state.items.length)
         return (
           <div>
-            <SearchBar onSubmit={this.handleSubmit} />
+            <SearchBar onSubmit={this.handleSubmit} onChange={this.handleChange} />
 
             <Container>
-              {status === "idle" && (
+              {query === "" && (
                 <CenterCss>Please, enter the name</CenterCss>
               )}
 
+              {this.state.items.length > 0 && <ImageGallery items={items} />}
+
               {status === "pending" && <Loader />}
 
-              {status === "fulfilled" && <ImageGallery items={items} />}
               {status === "fulfilled" && (
                 <Button text="Load more" onLoad={this.handleLoad}>
                   Load more
