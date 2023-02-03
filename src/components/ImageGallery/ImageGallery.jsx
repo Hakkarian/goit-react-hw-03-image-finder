@@ -6,7 +6,7 @@ import { ImageGalleryCss, ImageGalleryItemCss } from './ImageGallery.styled';
 
 const ImageGallery = ({ items, ...otherProps }) => <ImageGalleryCss>
     {items.map(item =>
-        <ImageGalleryItemCss key={item.id.toString()}><ImageGalleryItem item={item} {...otherProps} />
+        <ImageGalleryItemCss key={item.id}><ImageGalleryItem item={item} {...otherProps} />
         </ImageGalleryItemCss>)}
 </ImageGalleryCss>
 

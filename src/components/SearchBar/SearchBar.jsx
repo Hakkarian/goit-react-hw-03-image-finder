@@ -14,7 +14,6 @@ export const SearchBar = ({onSubmit, onChange}) =>
             id="txtbox"
             type="text"
             autoComplete="off"
-            autoFocus
             placeholder="Search images and photos"
         name="query"
           />
