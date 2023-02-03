@@ -6,9 +6,11 @@ import { Component, useEffect, useState } from 'react';
 const ImageGalleryItem = ({item}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // useEffect(() => {
-  //   window.addEventListener("keydown", this.closeEscape);
-  // }, []);
+  useEffect(() => {
+    document.addEventListener("keydown", closeEscape);
+
+    return () => document.removeEventListener('keydown', closeEscape)
+  }, []);
 
   const openModal = () => setIsModalOpen(true);
 

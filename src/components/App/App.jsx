@@ -61,13 +61,9 @@ const App = () => {
       console.log(error.message)
     }
     
+    // document.addEventListener('keydown', closeEscape)
 
-      
-    
-    
-
-    
-    
+    // return document.removeEventListener('keydown', closeEscape)
   }, [query, page])
 
   
@@ -93,6 +89,17 @@ const App = () => {
       e.target.reset();
   }
 
+  // //for modal
+
+  // const close = () => {
+  //   setIsModalOpen(false);
+  // };
+
+  // const closeEscape = (e) => {
+  //   if (e.key === "Escape") close();
+  // };
+
+  // //
 
   return (
     <div>
